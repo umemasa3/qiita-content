@@ -57,7 +57,7 @@ ScaffolderでパラメータをGitリポジトリへのPull Requestとして出�
 
 ### フロー
 
-![パターン1：GitOps PR承認フロー](./images/rhdh-pattern1-gitops.drawio.png)
+![パターン1：GitOps PR承認フロー](https://github.com/umemasa3/qiita-content/blob/main/public/images/rhdh-pattern1-gitops.drawio.svg?raw=true)
 
 ```text
 利用者 → RHDH Software Template入力
@@ -102,7 +102,7 @@ ScaffolderのカスタムアクションからServiceNow、Jira、または社�
 
 ### パターン2のフロー
 
-![パターン2：外部ワークフローシステム連携](./images/rhdh-pattern2-external-wf.drawio.png)
+![パターン2：外部ワークフローシステム連携](https://github.com/umemasa3/qiita-content/blob/main/public/images/rhdh-pattern2-external-wf.drawio.svg?raw=true)
 
 ```text
 利用者 → RHDH Software Template入力
@@ -148,7 +148,7 @@ RHDH 1.7以降で利用可能なOrchestratorプラグインを使い、Serverles
 
 ### パターン3のフロー
 
-![パターン3：RHDH Orchestrator](./images/rhdh-pattern3-orchestrator.drawio.png)
+![パターン3：RHDH Orchestrator](https://github.com/umemasa3/qiita-content/blob/main/public/images/rhdh-pattern3-orchestrator.drawio.svg?raw=true)
 
 ```text
 利用者 → RHDH Software Template入力
@@ -205,7 +205,7 @@ RHDH 1.7以降で利用可能なOrchestratorプラグインを使い、Serverles
 
 ### 判断のフローチャート
 
-![承認パターン選定フローチャート](./images/rhdh-approval-selection-flow.drawio.png)
+![承認パターン選定フローチャート](https://github.com/umemasa3/qiita-content/blob/main/public/images/rhdh-approval-selection-flow.drawio.svg?raw=true)
 
 1. **承認者はGitの操作に慣れているか？**
    - Yes → パターン1を第一候補に

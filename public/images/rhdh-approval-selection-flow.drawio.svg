@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="620" viewBox="-0.5 -0.5 800 620">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  <g>
+    <!-- タイトル -->
+    <text x="400" y="25" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">承認パターン選定フローチャート</text>
+    <!-- スタート -->
+    <ellipse cx="350" cy="70" rx="100" ry="28" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="350" y="75" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle">承認フローが必要</text>
+    <!-- Q1 -->
+    <polygon points="350,140 500,200 350,260 200,200" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="350" y="195" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">承認者はGit操作に</text>
+    <text x="350" y="212" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">慣れているか？</text>
+    <!-- Q2 -->
+    <polygon points="540,310 680,370 540,430 400,370" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="540" y="362" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">既存の承認システム</text>
+    <text x="540" y="379" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">(ServiceNow等)が</text>
+    <text x="540" y="396" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">あるか？</text>
+    <!-- Q3 -->
+    <polygon points="540,480 660,530 540,580 420,530" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="540" y="525" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">OpenShift環境を</text>
+    <text x="540" y="542" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">運用しているか？</text>
+    <!-- パターン1 -->
+    <rect x="30" y="178" width="130" height="45" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+    <text x="95" y="196" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">パターン1</text>
+    <text x="95" y="214" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">GitOps PR承認</text>
+    <!-- パターン2 -->
+    <rect x="710" y="348" width="140" height="45" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+    <text x="780" y="366" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">パターン2</text>
+    <text x="780" y="384" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">外部WFシステム連携</text>
+    <!-- パターン3 -->
+    <rect x="690" y="508" width="140" height="45" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+    <text x="760" y="526" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">パターン3</text>
+    <text x="760" y="544" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">RHDH Orchestrator</text>
+    <!-- パターン1(代替) -->
+    <rect x="340" y="588" width="170" height="40" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <text x="425" y="612" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">パターン1から段階的に開始</text>
+    <!-- 矢印: Start → Q1 -->
+    <line x1="350" y1="98" x2="350" y2="138" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <!-- 矢印: Q1 → パターン1 (Yes) -->
+    <line x1="198" y1="200" x2="162" y2="200" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="180" y="190" fill="#228B22" font-family="Helvetica" font-size="12" font-weight="bold">Yes</text>
+    <!-- 矢印: Q1 → Q2 (No) -->
+    <line x1="500" y1="200" x2="540" y2="200" stroke="#333" stroke-width="1.5"/>
+    <line x1="540" y1="200" x2="540" y2="308" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="520" y="190" fill="#cc0000" font-family="Helvetica" font-size="12" font-weight="bold">No</text>
+    <!-- 矢印: Q2 → パターン2 (Yes) -->
+    <line x1="680" y1="370" x2="708" y2="370" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="690" y="360" fill="#228B22" font-family="Helvetica" font-size="12" font-weight="bold">Yes</text>
+    <!-- 矢印: Q2 → Q3 (No) -->
+    <line x1="540" y1="430" x2="540" y2="478" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="555" y="458" fill="#cc0000" font-family="Helvetica" font-size="12" font-weight="bold">No</text>
+    <!-- 矢印: Q3 → パターン3 (Yes) -->
+    <line x1="660" y1="530" x2="688" y2="530" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="672" y="520" fill="#228B22" font-family="Helvetica" font-size="12" font-weight="bold">Yes</text>
+    <!-- 矢印: Q3 → パターン1代替 (No) -->
+    <line x1="540" y1="580" x2="540" y2="608" stroke="#333" stroke-width="1.5"/>
+    <line x1="540" y1="608" x2="512" y2="608" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="555" y="598" fill="#cc0000" font-family="Helvetica" font-size="12" font-weight="bold">No</text>
+  </g>
+</svg>
