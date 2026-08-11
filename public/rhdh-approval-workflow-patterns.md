@@ -1,17 +1,19 @@
 ---
-title: "RHDH/Backstageで承認フローを実現する3つのパターンと選定の考え方"
+title: RHDH/Backstageで承認フローを実現する3つのパターンと選定の考え方
 tags:
-  - "Backstage"
-  - "RedHatDeveloperHub"
-  - "プラットフォームエンジニアリング"
-  - "IDP"
-  - "DevOps"
+  - Backstage
+  - RedHatDeveloperHub
+  - プラットフォームエンジニアリング
+  - IdP
+  - devops
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-11T16:29:47+09:00'
+id: c104cd46e495f073da04
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
