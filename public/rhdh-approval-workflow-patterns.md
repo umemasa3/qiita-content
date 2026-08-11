@@ -61,15 +61,6 @@ ScaffolderでパラメータをGitリポジトリへのPull Requestとして出�
 
 ![パターン1：GitOps PR承認フロー](https://github.com/umemasa3/qiita-content/blob/main/public/images/rhdh-pattern1-gitops.drawio.svg?raw=true)
 
-```text
-利用者 → RHDH Software Template入力
-        → Scaffolder Action: publish:github:pull-request
-        → GitリポジトリにPR作成（terraform.tfvars, values.yaml等）
-        → 共通基盤チームがPRレビュー・Approve
-        → マージ
-        → HCP Terraform Run / ArgoCD Sync / GitHub Actions等が自動実行
-```
-
 ### 実装のポイント
 
 - Scaffolderの標準アクション `publish:github:pull-request` を使用するため、カスタムアクションの開発が不要
@@ -105,15 +96,6 @@ ScaffolderのカスタムアクションからServiceNow、Jira、または社�
 ### パターン2のフロー
 
 ![パターン2：外部ワークフローシステム連携](https://github.com/umemasa3/qiita-content/blob/main/public/images/rhdh-pattern2-external-wf.drawio.svg?raw=true)
-
-```text
-利用者 → RHDH Software Template入力
-        → Scaffolderカスタムアクション: servicenow:create-request
-        → ServiceNow/Jiraにリクエスト起票
-        → 承認者がServiceNow/Jira上で承認
-        → Webhook発火 → CI/CDパイプライン起動
-        → Terraform apply / Ansible実行
-```
 
 ### パターン2の実装ポイント
 
@@ -151,15 +133,6 @@ RHDH 1.7以降で利用可能なOrchestratorプラグインを使い、Serverles
 ### パターン3のフロー
 
 ![パターン3：RHDH Orchestrator](https://github.com/umemasa3/qiita-content/blob/main/public/images/rhdh-pattern3-orchestrator.drawio.svg?raw=true)
-
-```text
-利用者 → RHDH Software Template入力
-        → Orchestratorワークフロー起動
-        → ワークフロー内で承認待ちステート（Human Task）
-        → 承認者がRHDH上で承認（Notifications連携）
-        → 後続のステップが自動実行
-        → 結果がRHDH上に表示
-```
 
 ### パターン3の実装ポイント
 
