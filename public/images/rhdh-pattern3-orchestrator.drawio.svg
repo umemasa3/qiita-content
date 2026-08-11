@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="920" height="340" viewBox="-0.5 -0.5 920 340">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="arrow-dash" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+  <g>
+    <!-- タイトル -->
+    <text x="460" y="25" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">パターン3：RHDH Orchestrator（ServerlessWorkflow）</text>
+    <!-- RHDH枠（破線） -->
+    <rect x="120" y="55" width="750" height="175" rx="12" fill="none" stroke="#6c8ebf" stroke-width="2" stroke-dasharray="8 4"/>
+    <text x="140" y="75" fill="#6c8ebf" font-family="Helvetica" font-size="14" font-weight="bold">RHDH</text>
+    <!-- すべてRHDH内で完結ラベル -->
+    <rect x="400" y="60" width="160" height="22" rx="4" fill="#dae8fc" stroke="#6c8ebf"/>
+    <text x="480" y="75" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">すべてRHDH内で完結</text>
+    <!-- 利用者 -->
+    <circle cx="55" cy="130" r="15" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="55" y1="145" x2="55" y2="175" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="35" y1="158" x2="75" y2="158" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="55" y1="175" x2="40" y2="200" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="55" y1="175" x2="70" y2="200" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="55" y="220" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">利用者</text>
+    <!-- Software Template -->
+    <rect x="130" y="120" width="130" height="55" rx="10" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <text x="195" y="143" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">Software</text>
+    <text x="195" y="163" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">Template</text>
+    <!-- Orchestrator -->
+    <rect x="310" y="120" width="140" height="55" rx="10" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="380" y="143" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">Orchestrator</text>
+    <text x="380" y="163" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">(SonataFlow)</text>
+    <!-- 承認待ち（ひし形） -->
+    <polygon points="560,100 620,147 560,195 500,147" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+    <text x="560" y="143" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">承認待ち</text>
+    <text x="560" y="160" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">(Human Task)</text>
+    <!-- 自動実行 -->
+    <rect x="690" y="120" width="140" height="55" rx="10" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.5"/>
+    <text x="760" y="143" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">後続ステップ</text>
+    <text x="760" y="163" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">自動実行</text>
+    <!-- Notifications -->
+    <rect x="380" y="270" width="120" height="40" rx="8" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="440" y="295" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Notifications</text>
+    <!-- 承認者 -->
+    <circle cx="590" cy="270" r="15" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="590" y1="285" x2="590" y2="310" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="570" y1="296" x2="610" y2="296" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="590" y1="310" x2="575" y2="330" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="590" y1="310" x2="605" y2="330" stroke="#b85450" stroke-width="1.5"/>
+    <text x="640" y="290" fill="#333" font-family="Helvetica" font-size="12">承認者</text>
+    <!-- 矢印 -->
+    <line x1="75" y1="147" x2="128" y2="147" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="262" y1="147" x2="308" y2="147" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="452" y1="147" x2="498" y2="147" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="622" y1="147" x2="688" y2="147" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <!-- 通知（破線） -->
+    <line x1="540" y1="197" x2="480" y2="268" stroke="#666" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrow-dash)"/>
+    <line x1="502" y1="290" x2="572" y2="290" stroke="#666" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arrow-dash)"/>
+    <!-- 承認（実線で戻る） -->
+    <line x1="590" y1="255" x2="575" y2="197" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <!-- ラベル -->
+    <text x="280" y="137" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">起動</text>
+    <text x="655" y="137" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">続行</text>
+    <text x="490" y="240" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">通知</text>
+    <text x="610" y="230" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">承認</text>
+  </g>
+</svg>
