@@ -1,16 +1,18 @@
 ---
-title: "AI駆動開発で「誰でもアプリが作れる時代」に、なぜエンジニアのハーネスが必要なのか"
+title: AI駆動開発で「誰でもアプリが作れる時代」に、なぜエンジニアのハーネスが必要なのか
 tags:
-  - "AI駆動開発"
-  - "プラットフォームエンジニアリング"
-  - "セキュリティ"
-  - "組織開発"
+  - AI駆動開発
+  - プラットフォームエンジニアリング
+  - Security
+  - 組織開発
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-11T15:40:37+09:00'
+id: ebf788505c3e926155f0
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
