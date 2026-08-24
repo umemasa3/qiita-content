@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1000" height="430" viewBox="-0.5 -0.5 1000 430">
+  <defs/>
+  <g>
+    <!-- タイトル -->
+    <text x="500" y="26" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">二次情報の収集コストが下がると、たどり着く結論は収束する</text>
+
+    <!-- 区切り線 -->
+    <line x1="500" y1="50" x2="500" y2="415" stroke="#cccccc" stroke-width="1" stroke-dasharray="6 4"/>
+
+    <!-- ===== 左パネル：Before ===== -->
+    <rect x="30" y="50" width="440" height="30" rx="4" fill="#e1d5e7" stroke="#9673a6"/>
+    <text x="250" y="70" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle" font-weight="bold">Before：収集にコストがかかった時代</text>
+
+    <!-- 調べる人 3人 -->
+    <circle cx="70" cy="115" r="12" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="70" y="147" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Aさん</text>
+    <circle cx="70" cy="195" r="12" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="70" y="227" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Bさん</text>
+    <circle cx="70" cy="275" r="12" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="70" y="307" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Cさん</text>
+
+    <!-- 部分的にしか届かない矢印 -->
+    <line x1="95" y1="115" x2="180" y2="110" stroke="#999" stroke-width="1.5"/>
+    <polygon points="180,110 173,107 173,113" fill="#999"/>
+    <line x1="95" y1="195" x2="180" y2="180" stroke="#999" stroke-width="1.5"/>
+    <polygon points="180,180 173,177 173,184" fill="#999"/>
+    <line x1="95" y1="275" x2="180" y2="250" stroke="#999" stroke-width="1.5"/>
+    <polygon points="180,250 173,248 174,255" fill="#999"/>
+
+    <!-- 到達できた情報（バラバラ・部分的） -->
+    <rect x="185" y="95" width="105" height="32" rx="5" fill="#f5f5f5" stroke="#bbbbbb"/>
+    <text x="237" y="115" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">一部の情報だけ</text>
+    <rect x="185" y="165" width="105" height="32" rx="5" fill="#f5f5f5" stroke="#bbbbbb"/>
+    <text x="237" y="185" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">別の一部だけ</text>
+    <rect x="185" y="235" width="105" height="32" rx="5" fill="#f5f5f5" stroke="#bbbbbb"/>
+    <text x="237" y="255" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">また別の一部</text>
+
+    <!-- 結論（バラバラ） -->
+    <line x1="295" y1="111" x2="350" y2="111" stroke="#999" stroke-width="1.5"/>
+    <polygon points="350,111 343,108 343,114" fill="#999"/>
+    <line x1="295" y1="181" x2="350" y2="181" stroke="#999" stroke-width="1.5"/>
+    <polygon points="350,181 343,178 343,184" fill="#999"/>
+    <line x1="295" y1="251" x2="350" y2="251" stroke="#999" stroke-width="1.5"/>
+    <polygon points="350,251 343,248 343,254" fill="#999"/>
+
+    <rect x="355" y="95" width="95" height="32" rx="5" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="402" y="115" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">仮説 X</text>
+    <rect x="355" y="165" width="95" height="32" rx="5" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="402" y="185" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">仮説 Y</text>
+    <rect x="355" y="235" width="95" height="32" rx="5" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="402" y="255" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">仮説 Z</text>
+
+    <rect x="185" y="320" width="265" height="75" rx="6" fill="#ffffff" stroke="#82b366" stroke-width="1.5"/>
+    <text x="317" y="343" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">結論が分散する</text>
+    <text x="317" y="364" fill="#555" font-family="Helvetica" font-size="11" text-anchor="middle">誰がどこまで調べられたかで差がつく</text>
+    <text x="317" y="383" fill="#555" font-family="Helvetica" font-size="11" text-anchor="middle">＝ 情報収集力そのものが優位性</text>
+
+    <!-- ===== 右パネル：After ===== -->
+    <rect x="530" y="50" width="440" height="30" rx="4" fill="#ffe6cc" stroke="#d79b00"/>
+    <text x="750" y="70" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle" font-weight="bold">After：AIが数時間で網羅する時代</text>
+
+    <!-- 調べる人 3人 -->
+    <circle cx="570" cy="115" r="12" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="570" y="147" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Aさん</text>
+    <circle cx="570" cy="195" r="12" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="570" y="227" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Bさん</text>
+    <circle cx="570" cy="275" r="12" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="570" y="307" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Cさん</text>
+
+    <!-- 全員が同じAIを通る -->
+    <line x1="595" y1="115" x2="655" y2="180" stroke="#d79b00" stroke-width="1.5"/>
+    <polygon points="655,180 648,175 651,183" fill="#d79b00"/>
+    <line x1="595" y1="195" x2="655" y2="195" stroke="#d79b00" stroke-width="1.5"/>
+    <polygon points="655,195 648,192 648,198" fill="#d79b00"/>
+    <line x1="595" y1="275" x2="655" y2="210" stroke="#d79b00" stroke-width="1.5"/>
+    <polygon points="655,210 648,207 651,215" fill="#d79b00"/>
+
+    <rect x="660" y="160" width="110" height="70" rx="8" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+    <text x="715" y="185" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">AIエージェント</text>
+    <text x="715" y="203" fill="#555" font-family="Helvetica" font-size="10" text-anchor="middle">による網羅調査</text>
+    <text x="715" y="220" fill="#555" font-family="Helvetica" font-size="10" text-anchor="middle">（数時間）</text>
+
+    <!-- 同じ情報に到達 -->
+    <line x1="775" y1="195" x2="825" y2="195" stroke="#d79b00" stroke-width="1.5"/>
+    <polygon points="825,195 818,192 818,198" fill="#d79b00"/>
+
+    <rect x="830" y="160" width="115" height="70" rx="6" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+    <text x="887" y="183" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">公開情報の</text>
+    <text x="887" y="200" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">ほぼ全体</text>
+    <text x="887" y="220" fill="#b85450" font-family="Helvetica" font-size="10" text-anchor="middle">全員が同じ場所へ</text>
+
+    <rect x="660" y="320" width="285" height="75" rx="6" fill="#ffffff" stroke="#b85450" stroke-width="1.5"/>
+    <text x="802" y="343" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">結論が収束する</text>
+    <text x="802" y="364" fill="#555" font-family="Helvetica" font-size="11" text-anchor="middle">見つけた機会は、他の全員も見つけている</text>
+    <text x="802" y="383" fill="#555" font-family="Helvetica" font-size="11" text-anchor="middle">＝ どこもレッドオーシャンに見える</text>
+  </g>
+</svg>
