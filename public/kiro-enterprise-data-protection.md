@@ -1,17 +1,19 @@
 ---
-title: "エンタープライズでKiroを使うなら、ログイン方法でデータの扱いが変わる"
+title: エンタープライズでKiroを使うなら、ログイン方法でデータの扱いが変わる
 tags:
-  - "Kiro"
-  - "AI駆動開発"
-  - "セキュリティ"
-  - "エンタープライズ"
-  - "IAMIdentityCenter"
+  - Kiro
+  - AI駆動開発
+  - Security
+  - エンタープライズ
+  - IAMIdentityCenter
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-30T00:03:52+09:00'
+id: 57f3b2c90a14164c3053
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
