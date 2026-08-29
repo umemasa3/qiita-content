@@ -1,17 +1,19 @@
 ---
-title: "Kiroのプロンプトログ・利用状況をS3に出力すべきか、その判断基準"
+title: Kiroのプロンプトログ・利用状況をS3に出力すべきか、その判断基準
 tags:
-  - "Kiro"
-  - "AI駆動開発"
-  - "エンタープライズ"
-  - "ガバナンス"
-  - "S3"
+  - Kiro
+  - AI駆動開発
+  - エンタープライズ
+  - ガバナンス
+  - S3
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-30T00:35:31+09:00'
+id: e2c4eac1e3ed0f39c95f
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
