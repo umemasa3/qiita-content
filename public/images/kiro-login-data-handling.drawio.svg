@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="860" height="420" viewBox="-0.5 -0.5 860 420">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  <g>
+    <!-- タイトル -->
+    <text x="430" y="28" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">Kiroのログイン経路とデータの扱いの違い</text>
+
+    <!-- 開発者 -->
+    <circle cx="70" cy="205" r="18" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="70" y1="223" x2="70" y2="262" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="48" y1="240" x2="92" y2="240" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="70" y1="262" x2="53" y2="288" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="70" y1="262" x2="87" y2="288" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="70" y="310" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle">開発者</text>
+
+    <!-- 上段: individual経路 -->
+    <rect x="180" y="70" width="220" height="60" rx="10" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+    <text x="290" y="94" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle" font-weight="bold">ソーシャルログイン</text>
+    <text x="290" y="114" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">(GitHub / Google / Builder ID)</text>
+
+    <rect x="450" y="70" width="180" height="60" rx="10" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+    <text x="540" y="94" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle" font-weight="bold">individual subscriber</text>
+    <text x="540" y="114" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">(有料でもこの区分)</text>
+
+    <rect x="680" y="60" width="160" height="80" rx="10" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+    <text x="760" y="88" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">サービス改善に</text>
+    <text x="760" y="106" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">利用される</text>
+    <text x="760" y="124" fill="#b85450" font-family="Helvetica" font-size="11" text-anchor="middle">(モデル学習を含む)</text>
+
+    <!-- 下段: enterprise経路 -->
+    <rect x="180" y="280" width="220" height="60" rx="10" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <text x="290" y="304" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle" font-weight="bold">IAM Identity Center</text>
+    <text x="290" y="324" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">(Okta / Microsoft Entra ID)</text>
+
+    <rect x="450" y="280" width="180" height="60" rx="10" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <text x="540" y="304" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle" font-weight="bold">enterprise user</text>
+    <text x="540" y="324" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">(組織アカウント管理)</text>
+
+    <rect x="680" y="270" width="160" height="80" rx="10" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <text x="760" y="298" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">サービス改善に</text>
+    <text x="760" y="316" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">利用されない</text>
+    <text x="760" y="334" fill="#228B22" font-family="Helvetica" font-size="11" text-anchor="middle">(自動オプトアウト)</text>
+
+    <!-- 矢印: 開発者から2経路へ分岐 -->
+    <line x1="92" y1="195" x2="178" y2="105" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="92" y1="215" x2="178" y2="305" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <!-- 上段 横矢印 -->
+    <line x1="400" y1="100" x2="448" y2="100" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="630" y1="100" x2="678" y2="100" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <!-- 下段 横矢印 -->
+    <line x1="400" y1="310" x2="448" y2="310" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="630" y1="310" x2="678" y2="310" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <!-- 保存リージョン注記 -->
+    <text x="540" y="150" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">データ保存: 米国東部(バージニア北部)固定</text>
+    <text x="540" y="360" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">データ保存: プロファイルのリージョン</text>
+  </g>
+</svg>
