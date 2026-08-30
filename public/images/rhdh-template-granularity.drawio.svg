@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="880" height="380" viewBox="-0.5 -0.5 880 380">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  <g>
+    <text x="440" y="26" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">テンプレートの粒度：2つのアプローチ</text>
+
+    <!-- 左: ビルディングブロック型 -->
+    <rect x="30" y="50" width="400" height="310" rx="10" fill="none" stroke="#82b366" stroke-width="1.5"/>
+    <text x="230" y="76" fill="#5a8a3c" font-family="Helvetica" font-size="14" text-anchor="middle" font-weight="bold">A. ビルディングブロック型</text>
+
+    <!-- 小ブロック群 -->
+    <rect x="60" y="95" width="80" height="40" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="100" y="119" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">サービス雛形</text>
+    <rect x="155" y="95" width="80" height="40" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="195" y="119" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">CI設定</text>
+    <rect x="250" y="95" width="80" height="40" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="290" y="119" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">監視設定</text>
+    <rect x="345" y="95" width="70" height="40" rx="6" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="380" y="119" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">IaC</text>
+
+    <text x="230" y="160" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">組み合わせて使う</text>
+
+    <text x="60" y="190" fill="#5a8a3c" font-family="Helvetica" font-size="11" font-weight="bold">メリット</text>
+    <text x="60" y="210" fill="#333" font-family="Helvetica" font-size="10">・再利用性が高い</text>
+    <text x="60" y="228" fill="#333" font-family="Helvetica" font-size="10">・変更の影響範囲が小さい</text>
+    <text x="60" y="246" fill="#333" font-family="Helvetica" font-size="10">・責任分界が明確</text>
+    <text x="60" y="278" fill="#b85450" font-family="Helvetica" font-size="11" font-weight="bold">デメリット</text>
+    <text x="60" y="298" fill="#333" font-family="Helvetica" font-size="10">・組み合わせの管理が複雑</text>
+    <text x="60" y="316" fill="#333" font-family="Helvetica" font-size="10">・利用者の判断負荷</text>
+    <text x="60" y="334" fill="#333" font-family="Helvetica" font-size="10">・テンプレート数が増える</text>
+
+    <!-- 右: まとめたブロック型 -->
+    <rect x="450" y="50" width="400" height="310" rx="10" fill="none" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="650" y="76" fill="#997a00" font-family="Helvetica" font-size="14" text-anchor="middle" font-weight="bold">B. まとめたブロック型</text>
+
+    <!-- 1つの大ブロック -->
+    <rect x="500" y="95" width="300" height="45" rx="6" fill="#fff2cc" stroke="#d6b656"/>
+    <text x="650" y="114" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle" font-weight="bold">Webサービス一式</text>
+    <text x="650" y="130" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">雛形＋CI＋監視＋IaC をまとめて</text>
+
+    <text x="650" y="160" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">1つ選ぶだけで完結</text>
+
+    <text x="480" y="190" fill="#5a8a3c" font-family="Helvetica" font-size="11" font-weight="bold">メリット</text>
+    <text x="480" y="210" fill="#333" font-family="Helvetica" font-size="10">・利用者の判断負荷が低い</text>
+    <text x="480" y="228" fill="#333" font-family="Helvetica" font-size="10">・生成物の一貫性を保ちやすい</text>
+    <text x="480" y="246" fill="#333" font-family="Helvetica" font-size="10">・カタログがシンプル</text>
+    <text x="480" y="278" fill="#b85450" font-family="Helvetica" font-size="11" font-weight="bold">デメリット</text>
+    <text x="480" y="298" fill="#333" font-family="Helvetica" font-size="10">・再利用性が低い（重複しがち）</text>
+    <text x="480" y="316" fill="#333" font-family="Helvetica" font-size="10">・変更が波及しにくい</text>
+    <text x="480" y="334" fill="#333" font-family="Helvetica" font-size="10">・1テンプレートが肥大化</text>
+
+    <!-- 中央の注記 -->
+    <text x="440" y="372" fill="#3d5a80" font-family="Helvetica" font-size="11" text-anchor="middle" font-weight="bold">fetch:template の重ねがけで「内部はA・外はB」の両取りが可能</text>
+  </g>
+</svg>
