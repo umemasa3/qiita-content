@@ -1,17 +1,19 @@
 ---
-title: "Kiro Web（Cloud Sessions）を組織で有効化すべきか、その判断材料"
+title: Kiro Web（Cloud Sessions）を組織で有効化すべきか、その判断材料
 tags:
-  - "Kiro"
-  - "AI駆動開発"
-  - "エンタープライズ"
-  - "ガバナンス"
-  - "CloudSessions"
+  - Kiro
+  - AI駆動開発
+  - エンタープライズ
+  - ガバナンス
+  - CloudSessions
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-30T14:08:51+09:00'
+id: 1030d160e1011be903d1
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
