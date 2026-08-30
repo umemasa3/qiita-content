@@ -1,17 +1,19 @@
 ---
-title: "RHDHのSoftware Templateはどの粒度で作るべきか、そして既存モノレポへどう差し込むか"
+title: RHDHのSoftware Templateはどの粒度で作るべきか、そして既存モノレポへどう差し込むか
 tags:
-  - "Backstage"
-  - "RedHatDeveloperHub"
-  - "プラットフォームエンジニアリング"
-  - "IDP"
-  - "Scaffolder"
+  - Backstage
+  - RedHatDeveloperHub
+  - プラットフォームエンジニアリング
+  - IdP
+  - Scaffolder
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-31T07:54:34+09:00'
+id: df9a6bc4dfe536603fc9
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに

@@ -1,17 +1,19 @@
 ---
-title: "エンタープライズ企業で .kiro/ の中身をどこまで標準化すべきか検討してみた"
+title: エンタープライズ企業で .kiro/ の中身をどこまで標準化すべきか検討してみた
 tags:
-  - "Kiro"
-  - "AI駆動開発"
-  - "エンタープライズ"
-  - "開発標準化"
-  - "steering"
+  - Kiro
+  - AI駆動開発
+  - エンタープライズ
+  - 開発標準化
+  - steering
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-31T07:54:34+09:00'
+id: 08a8b5a071283e3200e6
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
