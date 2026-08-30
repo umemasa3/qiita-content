@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="920" height="300" viewBox="-0.5 -0.5 920 300">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  <g>
+    <text x="460" y="28" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">既存モノレポへの差し込みフロー</text>
+
+    <!-- ラベル -->
+    <rect x="120" y="55" width="60" height="22" rx="4" fill="#d5e8d4" stroke="#82b366"/>
+    <text x="150" y="70" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">自動</text>
+    <rect x="700" y="55" width="70" height="22" rx="4" fill="#f8cecc" stroke="#b85450"/>
+    <text x="735" y="70" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">人の判断</text>
+
+    <!-- 利用者 -->
+    <circle cx="55" cy="150" r="16" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="55" y1="166" x2="55" y2="200" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="37" y1="182" x2="73" y2="182" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="55" y1="200" x2="42" y2="222" stroke="#6c8ebf" stroke-width="1.5"/>
+    <line x1="55" y1="200" x2="68" y2="222" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="55" y="242" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">利用者</text>
+
+    <!-- Scaffolder入力 -->
+    <rect x="110" y="120" width="130" height="60" rx="10" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <text x="175" y="145" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Scaffolder入力</text>
+    <text x="175" y="163" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">repoUrl / name</text>
+
+    <!-- fetch:template -->
+    <rect x="280" y="120" width="150" height="60" rx="10" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <text x="355" y="142" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">fetch:template</text>
+    <text x="355" y="160" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">targetPath:</text>
+    <text x="355" y="174" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">packages/&lt;name&gt;</text>
+
+    <!-- publish PR -->
+    <rect x="470" y="120" width="170" height="60" rx="10" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="555" y="142" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">publish:github:</text>
+    <text x="555" y="158" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">pull-request</text>
+    <text x="555" y="174" fill="#333" font-family="Helvetica" font-size="9" text-anchor="middle">既存repoに新ブランチでPR</text>
+
+    <!-- 承認者 -->
+    <circle cx="720" cy="150" r="16" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="720" y1="166" x2="720" y2="200" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="702" y1="182" x2="738" y2="182" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="720" y1="200" x2="707" y2="222" stroke="#b85450" stroke-width="1.5"/>
+    <line x1="720" y1="200" x2="733" y2="222" stroke="#b85450" stroke-width="1.5"/>
+    <text x="720" y="242" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">レビュアー</text>
+
+    <!-- モノレポ -->
+    <rect x="790" y="120" width="120" height="60" rx="10" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.5"/>
+    <text x="850" y="145" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">既存モノレポ</text>
+    <text x="850" y="163" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">にマージ</text>
+
+    <!-- 矢印 -->
+    <line x1="75" y1="150" x2="108" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="240" y1="150" x2="278" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="430" y1="150" x2="468" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="640" y1="150" x2="702" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="670" y="140" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">PRレビュー</text>
+    <line x1="738" y1="150" x2="788" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="763" y="140" fill="#666" font-family="Helvetica" font-size="10" text-anchor="middle">承認</text>
+
+    <!-- 注記 -->
+    <text x="460" y="285" fill="#3d5a80" font-family="Helvetica" font-size="11" text-anchor="middle">新規リポジトリは作らない。サブディレクトリに閉じて差し込み、PRレビューを承認ゲートにする</text>
+  </g>
+</svg>
