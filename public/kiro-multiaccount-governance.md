@@ -7,8 +7,8 @@ tags:
   - "ガバナンス"
   - "IAMIdentityCenter"
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-08-30T10:08:02+09:00'
+id: 6b5acecba5ed6dc9a203
 organization_url_name: null
 slide: false
 ignorePublish: false
