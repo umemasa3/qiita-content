@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="840" height="640" viewBox="-0.5 -0.5 840 640">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  <g>
+    <text x="420" y="28" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">Kiro Web（Cloud Sessions）を有効化すべきかの判断フロー</text>
+
+    <!-- スタート -->
+    <ellipse cx="420" cy="74" rx="160" ry="28" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+    <text x="420" y="79" fill="#333" font-family="Helvetica" font-size="13" text-anchor="middle">Cloud Sessionsの有効化を検討</text>
+
+    <!-- Q1 -->
+    <polygon points="420,132 590,190 420,248 250,190" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="420" y="185" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">MCP・モデル・CMKを組織</text>
+    <text x="420" y="202" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">ポリシーで厳格に統制？</text>
+
+    <!-- Q2 -->
+    <polygon points="420,298 590,356 420,414 250,356" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="420" y="345" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">変更ごとの承認(Supervised)や</text>
+    <text x="420" y="362" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">データ処理場所の制約が</text>
+    <text x="420" y="379" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">必須？（us-east-1固定）</text>
+
+    <!-- Q3 -->
+    <polygon points="420,464 590,522 420,580 250,522" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+    <text x="420" y="511" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">.kiro/ とPRレビューで</text>
+    <text x="420" y="528" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">代替統制を用意でき、</text>
+    <text x="420" y="545" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">サーバー側cloneを許容できる？</text>
+
+    <!-- 結論: 有効化しない (Q1 Yes) -->
+    <rect x="620" y="165" width="200" height="50" rx="8" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+    <text x="720" y="187" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">当面は有効化しない</text>
+    <text x="720" y="205" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">統制外の開発経路になる</text>
+
+    <!-- 結論: 有効化しない (Q2 Yes) -->
+    <rect x="620" y="331" width="200" height="50" rx="8" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+    <text x="720" y="353" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">要件を満たせない</text>
+    <text x="720" y="371" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">Supervised不可/リージョン固定</text>
+
+    <!-- 結論: 統制を整えてから (Q3 No) -->
+    <rect x="620" y="497" width="200" height="50" rx="8" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+    <text x="720" y="519" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">統制を整えてから</text>
+    <text x="720" y="537" fill="#333" font-family="Helvetica" font-size="10" text-anchor="middle">.kiro/ とレビュー体制を先に</text>
+
+    <!-- 結論: 有効化 (Q3 Yes) -->
+    <rect x="320" y="600" width="200" height="34" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+    <text x="420" y="622" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">有効化を前向きに検討</text>
+
+    <!-- 矢印 -->
+    <line x1="420" y1="102" x2="420" y2="130" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <!-- Q1 -->
+    <line x1="590" y1="190" x2="618" y2="190" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="600" y="181" fill="#cc0000" font-family="Helvetica" font-size="12" font-weight="bold">Yes</text>
+    <line x1="420" y1="248" x2="420" y2="296" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="435" y="276" fill="#228B22" font-family="Helvetica" font-size="12" font-weight="bold">No</text>
+    <!-- Q2 -->
+    <line x1="590" y1="356" x2="618" y2="356" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="600" y="347" fill="#cc0000" font-family="Helvetica" font-size="12" font-weight="bold">Yes</text>
+    <line x1="420" y1="414" x2="420" y2="462" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="435" y="442" fill="#228B22" font-family="Helvetica" font-size="12" font-weight="bold">No</text>
+    <!-- Q3 -->
+    <line x1="590" y1="522" x2="618" y2="522" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="600" y="513" fill="#cc0000" font-family="Helvetica" font-size="12" font-weight="bold">No</text>
+    <line x1="420" y1="580" x2="420" y2="598" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="435" y="594" fill="#228B22" font-family="Helvetica" font-size="12" font-weight="bold">Yes</text>
+  </g>
+</svg>
