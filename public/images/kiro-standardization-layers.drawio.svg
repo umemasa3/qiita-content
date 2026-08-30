@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="860" height="460" viewBox="-0.5 -0.5 860 460">
+  <defs/>
+  <g>
+    <text x="430" y="28" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">.kiro/ の標準化レイヤー</text>
+
+    <!-- レイヤー1: 組織標準 -->
+    <rect x="60" y="55" width="740" height="110" rx="10" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+    <text x="80" y="80" fill="#5a8a3c" font-family="Helvetica" font-size="14" font-weight="bold">組織標準（全社で揃える）</text>
+    <text x="80" y="102" fill="#666" font-family="Helvetica" font-size="11">配布: リポジトリ .kiro/ へコミット ＋ MDMで ~/.kiro/steering/ 配布</text>
+    <rect x="80" y="115" width="220" height="38" rx="6" fill="#ffffff" stroke="#82b366"/>
+    <text x="190" y="138" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">セキュリティ・規範 steering</text>
+    <rect x="315" y="115" width="220" height="38" rx="6" fill="#ffffff" stroke="#82b366"/>
+    <text x="425" y="138" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">技術スタック前提 (tech.md)</text>
+    <rect x="550" y="115" width="230" height="38" rx="6" fill="#ffffff" stroke="#82b366"/>
+    <text x="665" y="138" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">MCP許可リスト</text>
+
+    <!-- レイヤー2: プロジェクト標準 -->
+    <rect x="60" y="185" width="740" height="110" rx="10" fill="#fff2cc" stroke="#d6b656" stroke-width="2"/>
+    <text x="80" y="210" fill="#997a00" font-family="Helvetica" font-size="14" font-weight="bold">プロジェクト標準（チーム・リポジトリ単位）</text>
+    <text x="80" y="232" fill="#666" font-family="Helvetica" font-size="11">配布: 各リポジトリの .kiro/ で管理（一律強制は避ける）</text>
+    <rect x="80" y="245" width="220" height="38" rx="6" fill="#ffffff" stroke="#d6b656"/>
+    <text x="190" y="268" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">コーディング規約</text>
+    <rect x="315" y="245" width="220" height="38" rx="6" fill="#ffffff" stroke="#d6b656"/>
+    <text x="425" y="268" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">プロジェクト構造 (structure.md)</text>
+    <rect x="550" y="245" width="230" height="38" rx="6" fill="#ffffff" stroke="#d6b656"/>
+    <text x="665" y="268" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">Specs（機能仕様）</text>
+
+    <!-- レイヤー3: 個人裁量 -->
+    <rect x="60" y="315" width="740" height="110" rx="10" fill="#dae8fc" stroke="#6c8ebf" stroke-width="2"/>
+    <text x="80" y="340" fill="#3d5a80" font-family="Helvetica" font-size="14" font-weight="bold">個人裁量（縛らない）</text>
+    <text x="80" y="362" fill="#666" font-family="Helvetica" font-size="11">配布: 各自の ~/.kiro/（IDE/CLIのみ・クラウドセッションでは効かない）</text>
+    <rect x="80" y="375" width="220" height="38" rx="6" fill="#ffffff" stroke="#6c8ebf"/>
+    <text x="190" y="398" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">個人の効率化 Skills</text>
+    <rect x="315" y="375" width="220" height="38" rx="6" fill="#ffffff" stroke="#6c8ebf"/>
+    <text x="425" y="398" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">個人の Hooks</text>
+    <rect x="550" y="375" width="230" height="38" rx="6" fill="#ffffff" stroke="#6c8ebf"/>
+    <text x="665" y="398" fill="#333" font-family="Helvetica" font-size="11" text-anchor="middle">エディタ内の個人設定</text>
+
+    <!-- 右端の矢印（統制 → 柔軟性） -->
+    <text x="825" y="90" fill="#5a8a3c" font-family="Helvetica" font-size="10" text-anchor="middle" transform="rotate(90 825 90)">統制強</text>
+    <text x="825" y="390" fill="#3d5a80" font-family="Helvetica" font-size="10" text-anchor="middle" transform="rotate(90 825 390)">裁量大</text>
+  </g>
+</svg>
