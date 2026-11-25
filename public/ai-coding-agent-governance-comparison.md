@@ -1,17 +1,19 @@
 ---
-title: "AIコーディングエージェント5製品を組織で使うとき、ガバナンスが一番効かせやすいのはどれか"
+title: AIコーディングエージェント5製品を組織で使うとき、ガバナンスが一番効かせやすいのはどれか
 tags:
-  - "AIエージェント"
-  - "ガバナンス"
-  - "AI駆動開発"
-  - "エンタープライズ"
-  - "セキュリティ"
+  - AIエージェント
+  - ガバナンス
+  - AI駆動開発
+  - エンタープライズ
+  - Security
 private: false
-updated_at: ""
-id: null
+updated_at: '2026-11-25T12:51:48+09:00'
+id: c4a80de8601c6062ff75
 organization_url_name: null
 slide: false
 ignorePublish: false
+posting_campaign_uuid: null
+agreed_posting_campaign_term: false
 ---
 
 ## はじめに
