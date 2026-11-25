@@ -56,7 +56,7 @@ Devinのように、ベンダーのクラウド上で動くことを前提にし
 - Kiro: [Governance](https://kiro.dev/docs/enterprise/governance/)
   / [Enterprise Management](https://kiro.dev/docs/enterprise/enterprise-management/getting-started/)
 
-## 先に結論
+## 結論
 
 どれが一番容易かは、**組織がすでに何を持っているか**でほぼ決まります。
 
