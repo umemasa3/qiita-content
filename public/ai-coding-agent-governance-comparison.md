@@ -1,11 +1,11 @@
 ---
-title: "Claude Code・Codex・Kiroを組織で使うとき、ガバナンスが一番効かせやすいのはどれか"
+title: "AIコーディングエージェント5製品を組織で使うとき、ガバナンスが一番効かせやすいのはどれか"
 tags:
-  - "ClaudeCode"
-  - "Codex"
-  - "Kiro"
+  - "AIエージェント"
   - "ガバナンス"
   - "AI駆動開発"
+  - "エンタープライズ"
+  - "セキュリティ"
 private: false
 updated_at: ""
 id: null
@@ -18,37 +18,60 @@ ignorePublish: false
 
 AIコーディングエージェントを組織に導入する検討をしていると、必ず出てくる質問があります。
 
-「Claude Code、Codex、Kiroのうち、どれが一番ガバナンスを取りやすいの？」
+「どのツールが一番ガバナンスを取りやすいの？」
 
-3つとも「組織向けの管理機能がある」とうたっていますが、管理の入口、ポリシーの届け方、効く範囲、迂回されやすさはかなり違います。
-この記事では、各製品の公式ドキュメント（2026年11月時点）をもとに、**管理者がガバナンスを効かせるまでの手間と、効かせた後の確実さ**という観点で3製品を比較します。
+主要な製品はどれも「組織向けの管理機能がある」とうたっています。
+しかし、管理の入口、ポリシーの届け方、効く範囲、迂回されやすさはかなり違います。
+この記事では、次の5製品を各社の公式ドキュメント（2026年11月時点）をもとに比較します。
+並びはアルファベット順で、優劣とは関係ありません。
+
+- **Antigravity**（Google。Gemini Enterprise経由の利用）
+- **Claude Code**（Anthropic）
+- **Codex**（OpenAI。ChatGPT Enterprise経由の利用）
+- **GitHub Copilot**（GitHub）
+- **Kiro**（AWS）
+
+比較の軸は、**管理者がガバナンスを効かせるまでの手間と、効かせた後の確実さ**です。
 
 :::note info
 この記事の「容易さ」は、機能の多さではなく「管理者が少ない手順で、組織の大多数に、迂回されにくい形でポリシーを適用できるか」を指します。
 機能が多いほど設計すべき項目も増えるため、多機能であることと容易であることは必ずしも一致しません。
 :::
 
+:::note info
+対象は、開発者の端末で動く使い方（IDE、CLI、デスクトップアプリ）です。
+Devinのように、ベンダーのクラウド上で動くことを前提にしたエージェントは、比べるべき観点が違うため対象外にしています。
+:::
+
 参考:
 
+- Antigravity: [Configure AI developer tools settings](https://docs.cloud.google.com/gemini/enterprise/docs/ai-developer-tools-settings)
+  / [Enterprise gateway](https://docs.cloud.google.com/gemini/enterprise/docs/ai-developer-tools/deploy-enterprise-gateway)
 - Claude Code: [Admin setup](https://code.claude.com/docs/en/admin-setup)
   / [Server-managed settings](https://code.claude.com/docs/en/server-managed-settings)
-- Codex: [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup) / [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
-- Kiro: [Governance](https://kiro.dev/docs/enterprise/governance/) / [Enterprise Management](https://kiro.dev/docs/enterprise/enterprise-management/getting-started/)
+- Codex: [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup)
+  / [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
+- GitHub Copilot: [Copilot policies](https://docs.github.com/en/copilot/concepts/policies)
+  / [Enterprise-managed settings](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/get-started)
+- Kiro: [Governance](https://kiro.dev/docs/enterprise/governance/)
+  / [Enterprise Management](https://kiro.dev/docs/enterprise/enterprise-management/getting-started/)
 
 ## 先に結論
 
 どれが一番容易かは、**組織がすでに何を持っているか**でほぼ決まります。
 
-| 組織の前提 | ガバナンスを効かせやすいもの | 理由 |
-|-----------|------------------------|------|
+| 組織の前提 | 効かせやすいもの | 理由 |
+|-----------|----------------|------|
+| Google Cloud / Gemini Enterpriseを使っている | Antigravity | Gemini Enterpriseの設定画面で、セキュリティ・ログ・モデルをまとめて管理できる |
 | MDMで端末を管理しており、実行内容まで細かく縛りたい | Claude Code | 制御項目が最も多く、MDM配布と組み合わせたときの強制力が高い |
 | ChatGPT Enterpriseを全社導入済みで、SCIM/RBACが整っている | Codex | 既存のワークスペース、グループ、ロールにそのままポリシーを割り当てられる |
+| GitHub Enterpriseを使っている | GitHub Copilot | ポリシーをリポジトリで管理でき、変更をPRでレビューして履歴を残せる |
 | AWSが中心で、IAM Identity Centerを運用している | Kiro | 既存のAWSアカウントとIdCの上で、コンソールのトグル中心に設定が終わる |
 
-そのうえで、3製品に共通する事実が2つあります。
+そのうえで、5製品に共通する事実が2つあります。
 
-- **個人アカウントでの利用を確実に封じるには、どれも端末側の設定（MDMなど）が要る**
-- **シェルやファイル操作の制御は、どれもクライアント側の強制であり、端末の管理者権限があれば迂回され得る**
+- **個人アカウントでの利用を確実に封じるには、端末かネットワークでの対策が要る**。管理コンソールの設定だけでは封じられない
+- **シェルやファイル操作の制御は、どれもクライアント側の強制が中心**。端末の管理者権限があれば迂回され得る
 
 つまり、どの製品を選んでも「コンソールで設定すれば終わり」にはなりません。
 この前提を押さえたうえで、各製品の違いを見ていきます。
@@ -63,6 +86,49 @@ AIコーディングエージェントを組織に導入する検討をしてい
 4. **制御できる範囲** — モデル、MCP、シェル、ファイル、ネットワークなど
 5. **グループ単位の差分** — 部門ごとに例外を持たせられるか
 6. **可視化と監査** — 使われ方を後から追えるか
+
+## Antigravity：Google Cloudの設定画面でまとめて管理する
+
+### Gemini Enterpriseの設定画面
+
+Antigravityを組織で管理するには、**Gemini Enterprise**（Standard / Plus / Pay-as-you-go）経由で使います。
+設定はGoogle Cloudコンソールの Gemini Enterprise > Settings > **AI developer tools** で行い、必要なロールはGemini Enterprise Adminです。
+開発者はGoogle CloudのSSO、Workforce Identity Federation（WIF）、ADCでサインインし、プロジェクトに紐づくライセンスを選びます。
+利用できる人の制御はIAMのロールで行い、AI developer toolsだけを使わせないカスタムロールも作れます。
+
+設定できる主な項目と、そのデフォルトは次のとおりです。
+
+| 項目 | デフォルト | 管理者ができること |
+|------|-----------|-----------------|
+| 作業フォルダ外のファイルアクセス | 拒否 | 拒否 / 毎回確認 / 許可 |
+| ターミナルの自動実行 | 常に実行 | 要レビュー / サンドボックス内で実行 / 常に実行 |
+| サンドボックスモード | 無効 | 有効化 |
+| ブラウザのアクセス制御 | 無効 | 許可URLリスト、JavaScript実行の可否 |
+| MCPサーバー | 無効 | 許可するサーバーをJSONで定義 |
+| モデル | Geminiモデルはすべて利用可 | 許可リストで制限。他社モデル（Claude）は管理者の同意が必要 |
+| プロンプトと応答のログ | 無効 | 有効化（自社プロジェクトのCloud Loggingに記録） |
+
+ログは自社のGoogle Cloudプロジェクトに保存されるため、IAMで閲覧者を絞り、BigQueryに流して分析できます。
+エージェントの操作を後から追う仕組みとしては、5製品の中でも扱いやすい部類です。
+
+### 初期値と設定の単位に注意
+
+- **ターミナルの自動実行が初期状態で「常に実行」**です。MCPやブラウザは初期でオフですが、ここは管理者が明示的に絞る必要があります
+- 設定は**プロジェクトとロケーション単位**です。公式ドキュメントで確認できた範囲では、同じプロジェクト内でグループごとに設定を変える仕組みは見当たりませんでした。部門ごとに変えたい場合はプロジェクトを分けることになります
+- JetBrainsやAndroid StudioなどACPで接続するIDEでは、IDE側が独自にMCPツールを注入できるため、MCPの制御は**ベストエフォート**と明記されています
+- 個人のGoogleアカウントでのサインインを禁止する設定は、公式ドキュメントで見つけられませんでした
+
+最後の点の回避策として、**Enterprise Gateway**という構成があります。
+MDMで端末に`admin_settings.json`を配り、Antigravityの通信を自社のゲートウェイ経由にする方式です。
+このモードでは開発者がGoogleアカウントでサインインせず、使えるモデルも`admin_settings.json`で固定できます。
+ただし、ゲートウェイの構築・運用が必要になるうえ、課金がライセンスに含まれるクレジットではなく従量課金になります。
+
+### Antigravityの評価
+
+**Google Cloudをすでに使っている組織にとっては、主要な設定が1画面に集まっていて導入しやすい**製品です。
+ログの保管先や閲覧権限を、既存のGoogle Cloudの仕組みでそのまま管理できる点も強みです。
+
+一方で、グループ単位で差分を持たせにくいこと、個人アカウントの封じ込めにゲートウェイ構成が要ることは、大きな組織では設計上の制約になります。
 
 ## Claude Code：制御は最も深い。そのぶん設計量も多い
 
@@ -83,7 +149,7 @@ Server-managed settingsを使うにはClaude for TeamsかEnterpriseのプラン�
 
 ### 制御できる範囲
 
-制御項目の多さは3製品の中で突出しています。主なものを挙げます。
+制御項目の多さは5製品の中で最も多いです。主なものを挙げます。
 
 - ツール・コマンドの許可/拒否ルール。ルールの出どころをmanaged settingsだけに限定することもできる
 - `--dangerously-skip-permissions`（確認なしモード）の無効化
@@ -117,7 +183,7 @@ Amazon Bedrockなどのクラウドプロバイダー経由で使う場合も、
 
 ### Claude Codeの評価
 
-**「効かせられる強さ」では3製品で最も上**ですが、**「効かせるまでの容易さ」では最も設計量が多い**製品です。
+**「効かせられる強さ」では5製品で最も上**ですが、**「効かせるまでの容易さ」では設計量が多い**製品です。
 配布経路の選択、迂回経路の封鎖（プロバイダー変数、APIキー、バージョン）、グループ設定の重複管理を、管理者が自分で設計する必要があります。
 MDMとエンドポイント管理がすでに整っている組織であれば、この設計量に見合うだけの統制が得られます。
 
@@ -169,9 +235,54 @@ RequirementsとDefaultsの区別も分かりやすく、「何を強制し、何
 一方で、ローカル/クラウド/APIの境界ごとに効く設定が違うため、「設定したつもりで効いていない」を防ぐ検証の手間は小さくありません。
 可視化は、ワークスペースのCodex分析、Analytics API、Compliance APIで行います。
 
+## GitHub Copilot：ポリシーをリポジトリで管理できる
+
+### 2つの管理レイヤー
+
+GitHub Copilotの管理は、2つのレイヤーに分かれています。
+
+- **Copilotポリシー**（Enterprise / OrganizationのAI controlsタブ）。どの機能・エージェント・モデルを使えるかを決める。Enterprise側で有効・無効を決めると、Organization側では上書きできない
+- **Enterprise-managed settings**（`managed-settings.json`）。クライアントの挙動を決める。権限ルール、確認なしモードの無効化、サンドボックスの強制、プラグイン、MCPの許可/拒否リストなど
+
+特徴的なのは後者の配り方で、**Enterprise内の`.github-private`リポジトリに`copilot/managed-settings.json`を置く**と、サポートされるクライアントに約1時間で配布されます。
+ポリシーの変更を、普段のコードと同じようにPRでレビューし、コミット履歴として残せます。
+GitHub上でファイルの検証も行われ、エラーはAI controlsの画面に表示されます。
+
+配布方法は3種類あり、優先度は **MDM > リポジトリ（server-managed） > ファイル > ユーザー設定** です。
+ただしサンドボックスや権限ルールなど一部のキーは、どの配布方法の設定も「最も厳しい方向」に合成されます。
+
+| 配布方法 | 対象 | 特徴 |
+|---------|------|------|
+| リポジトリ（server-managed） | Enterpriseからライセンスを受けたユーザー | Copilot cloud agentにも効く。Enterprise teams単位で上書きできる |
+| MDM | ローカルのクライアント | ライセンスの出どころに関係なく、その端末に効く |
+| ファイル | ローカルのクライアント | コンテナやCodespacesなど、MDMが使えない環境向け |
+
+### 初期値とネットワークでの統制
+
+管理者の手間を減らす点が2つあります。
+
+- **Copilot coding agent（cloud agent）と外部MCPサーバーの利用は、ライセンス付与直後はオフ**です。使わせる場合だけ、管理者が明示的に有効化します
+- **ネットワークのファイアウォールで、個人向けプラン（Free / Pro / Pro+など）のエンドポイントを遮断できます**。組織のプランのエンドポイントだけを許可すれば、社内ネットワークから個人のCopilotは使えません
+
+個人アカウントの封じ込めを、端末への配布ではなくネットワーク側で実現できるのは、5製品の中でGitHub Copilotだけでした。
+
+### 複数Organizationとサーバー配布の注意点
+
+- 同じEnterprise内の**複数のOrganizationからライセンスを受けたユーザーには、原則として最も緩いポリシーが適用されます**。Organizationごとに設定を変えている場合は、意図せず緩くなる組み合わせがないか確認が必要です
+- Server-managed settingsはサインインしたアカウントに紐づきます。CLIで取得に失敗しキャッシュもない場合、そのセッションでは適用されません。必ず効かせたい制限はMDMかファイルで配るよう、公式に案内されています
+- すべてのポリシーがすべてのクライアントに効くわけではありません。対応するサーフェスの一覧で確認が必要です
+
+### GitHub Copilotの評価
+
+**GitHub Enterpriseを使っている組織にとっては、ポリシーをコードと同じ流れで管理できる**点が大きな利点です。
+「誰が、いつ、なぜポリシーを変えたか」がPRとコミットに残るため、ポリシーが少しずつずれていくのを防ぎやすい構造です。
+エージェントの操作は監査ログ（`actor:Copilot`で絞り込み、180日分）、利用状況はusage metrics APIで追えます。
+
+一方で、Organizationの切り方によって適用されるポリシーが変わるため、組織構造が複雑な会社ほど確認の手間が増えます。
+
 ## Kiro：AWSの上で完結する。細かい制御はプレビュー段階
 
-### 管理の入口とID統制
+### Kiro consoleとIAM Identity Center
 
 Kiroの管理は、**Kiroプロファイルを作成したAWSアカウントのKiro console**で行います。
 ユーザーはIAM Identity Center（または外部IdP）経由でサブスクライブするため、既存のAWS組織とIdCを持っている会社なら、新しいID基盤を用意する必要がありません。
@@ -220,12 +331,12 @@ Kiro console の Controls で、KGLというYAML形式のポリシー（フォ�
 
 :::note warn
 クライアント側で強制される制御は、端末の管理者権限を持つユーザーには迂回され得ると公式に明記されています。
-これはKiroに限らず、前述のClaude Code、Codexも同様です。
+これはKiroに限らず、ほかの4製品も同様です。
 :::
 
 ### Kiroの評価
 
-AWS中心の組織にとっては、**3製品の中で最も導入時の手間が少ない**と考えます。
+**AWS中心の組織にとっては、導入時の手間が少ない**製品です。
 ID、課金、ログ出力先（S3）、暗号化キー（KMS）がすべて既存のAWSアカウント内に収まり、主要な制御はコンソールのトグルで済みます。
 
 弱点は2つです。
@@ -235,37 +346,44 @@ ID、課金、ログ出力先（S3）、暗号化キー（KMS）がすべて既�
 
 ## 観点別の比較表
 
-ここまでの内容を、冒頭の6つの観点でまとめます。
-◎・○・△は「その観点でガバナンスを効かせやすいか」の相対評価で、筆者の判断です。
+ここまでの内容を観点ごとにまとめます。
+「管理の入口」と「ID統制の土台」は、自社がどの基盤を持っているかで評価が逆転するため、記号を付けずに事実だけを並べています。
 
-| 観点 | Claude Code | Codex | Kiro |
-|------|-------------|-------|------|
-| 管理の入口 | ○ claude.ai管理コンソール＋端末配布 | ○ ChatGPT Admin Console（Agent security） | ◎ AWSアカウント内のKiro console |
-| ID統制の土台 | ○ SSO / SCIM（Claudeアカウント側） | ○ SSO / SCIM / RBAC（ChatGPTワークスペース側） | ◎ IAM Identity Center / 外部IdP |
-| 個人アカウントの封じ込め | △ 端末側のログイン強制、またはテナント制限 | △ 端末の`requirements.toml`かMDMが必要 | △ 端末の`managed-settings.json`が必要 |
-| 端末なしでの配布 | ○ Server-managed（1時間ごと） | ○ Agent securityのクラウド配布 | ○ コンソール設定、Enterprise Managementは5分で反映 |
-| 制御の深さ | ◎ 最も細かい | ○ 承認・サンドボックス・ネットワークまで対応 | ○ 主要項目はGA、シェル・ファイルはプレビュー |
-| グループ単位の差分 | △ Enterpriseのみ、設定がマージされない | ◎ 優先度付きOverrides | ○ アカウント上書き＋（プレビュー）グループルール |
-| 迂回されにくさ | △ 環境変数やAPIキーで取得自体を回避できる | ○ 端末MDMがクラウド設定より上位 | ○ モデル・Web検索・APIキーはサービス側で判定 |
-| 可視化・監査 | ○ OpenTelemetry、Analytics/Compliance API | ○ Analytics/Compliance API、OpenTelemetry | ◎ S3・OpenTelemetry出力を自社アカウントで保持 |
-| リスク機能の初期値 | ○ 管理者が明示的に閉じる | ○ Codex cloudはEnterpriseで初期オフ | ◎ APIキー・Cloud Sessionsは初期オフ |
+| 観点 | Antigravity | Claude Code | Codex | GitHub Copilot | Kiro |
+|------|-------------|-------------|-------|----------------|------|
+| 管理の入口 | Google Cloudコンソール（Gemini Enterprise） | claude.ai管理コンソール＋端末配布 | ChatGPT Admin Console（Agent security） | GitHubのAI controls＋`.github-private`リポジトリ | AWSアカウント内のKiro console |
+| ID統制の土台 | Google Cloud IAM / WIF | Claudeの組織（SSO / SCIM） | ChatGPTワークスペース（SSO / SCIM / RBAC） | GitHub Enterprise / Organization | IAM Identity Center / 外部IdP |
+
+以下は「その観点でガバナンスを効かせやすいか」の相対評価で、筆者の判断です。
+
+| 観点 | Antigravity | Claude Code | Codex | GitHub Copilot | Kiro |
+|------|-------------|-------------|-------|----------------|------|
+| 個人アカウントの封じ込め | △ サインイン制限は見当たらず、ゲートウェイ構成が必要 | △ 端末側のログイン強制、またはテナント制限 | △ 端末の`requirements.toml`かMDMが必要 | ○ ネットワークで個人プランを遮断できる | △ 端末の`managed-settings.json`が必要 |
+| 端末なしでの配布 | ○ コンソール設定 | ○ Server-managed（1時間ごと） | ○ Agent securityのクラウド配布 | ◎ リポジトリで管理し、PRでレビューできる | ○ コンソール設定、Enterprise Managementは5分で反映 |
+| 制御の深さ | ○ ファイル・ターミナル・ブラウザ・MCP・モデル | ◎ 最も細かい | ○ 承認・サンドボックス・ネットワークまで対応 | ○ 権限・サンドボックス・プラグイン・MCP | ○ 主要項目はGA、シェル・ファイルはプレビュー |
+| グループ単位の差分 | △ プロジェクト単位。グループ別設定は見当たらず | △ Enterpriseのみ、設定がマージされない | ◎ 優先度付きOverrides | ○ Enterprise teamsで上書き。複数Orgでは緩い側が適用 | ○ アカウント上書き＋（プレビュー）グループルール |
+| 迂回されにくさ | △ 強制方式の記載が少なく、検証が必要 | △ 環境変数やAPIキーで取得自体を回避できる | ○ 端末MDMがクラウド設定より上位 | ○ MDMが最上位で、一部キーは厳しい側に合成 | ○ モデル・Web検索・APIキーはサービス側で判定 |
+| 可視化・監査 | ◎ プロンプトログを自社プロジェクトのCloud Loggingに保存 | ○ OpenTelemetry、Analytics/Compliance API | ○ Analytics/Compliance API、OpenTelemetry | ○ 監査ログ（エージェントの操作）、usage metrics API | ◎ プロンプトログを自社アカウントのS3に保存 |
+| リスク機能の初期値 | ○ MCP・外部モデルはオフ。ターミナル自動実行はオン | ○ 管理者が明示的に閉じる | ○ Codex cloudはEnterpriseで初期オフ | ◎ cloud agent・外部MCPは初期オフ | ◎ APIキー・Cloud Sessionsは初期オフ |
 
 ## どの組織でも共通してやるべきこと
 
 製品を問わず、ガバナンスを実効性のあるものにするために必要なことは共通しています。
 
-- **端末側の配布経路を用意する**。3製品とも、個人アカウントでの利用を封じる設定は端末側でしか効かない
+- **端末かネットワークの統制手段を用意する**。個人アカウントでの利用は、管理コンソールの設定だけでは封じられない
 - **組織のID以外でのログインを封じる**。統制が効くのは組織のIDでログインしたセッションだけ
 - **クライアント側強制の限界を前提にする**。端末の管理者権限の扱い、ネットワーク側の制御（プロキシやテナント制限）と組み合わせる
-- **ローカルとクラウド実行を別のものとして扱う**。3製品ともクラウド実行には端末のポリシーが届かず、別の設定が必要
+- **ローカルとクラウド実行を分けて確認する**。端末に配ったポリシーはクラウド実行には届かない。サーバー配布の設定がクラウド実行に効くかどうかも製品ごとに違う
 - **設定後に、許可される操作と拒否される操作の両方を実機で確認する**。どの製品も「設定はしたが効いていない」ケースがドキュメントに書かれている
 
 ## まとめ
 
-- **Claude Codeは最も深く統制できるが、最も設計量が多い**。MDMが整っている組織なら強力だが、Server-managed settingsだけに頼ると迂回経路が残る
+- **Antigravityは、Google Cloudを使っている組織なら設定が1画面に集まっていて始めやすい**。ただしグループ単位の差分と個人アカウントの封じ込めには工夫が要る
+- **Claude Codeは最も深く統制できるが、設計量も多い**。MDMが整っている組織なら強力だが、Server-managed settingsだけに頼ると迂回経路が残る
 - **Codexは、ChatGPT Enterpriseを使っている組織なら、グループ単位の配布が最も整理しやすい**。ただしローカル/クラウド/APIの境界ごとに確認が要る
-- **AWS中心の組織ならKiroが最も容易**。IdC、S3、KMSといった既存のAWS資産の上で、コンソール中心に統制できる。シェルやファイルの細かい制御はEnterprise Management（プレビュー）の成熟待ち
-- どれを選んでも、**個人アカウントの封じ込めとクライアント側強制の限界には、端末管理で対応する必要がある**
+- **GitHub Copilotは、GitHub Enterpriseを使っている組織なら、ポリシーをコードと同じように管理できる**。個人プランをネットワークで遮断できるのも強み。複数Organizationにまたがるユーザーの扱いには注意
+- **Kiroは、AWS中心の組織なら既存のAWS資産の上で統制できる**。シェルやファイルの細かい制御はEnterprise Management（プレビュー）の成熟待ち
+- どれを選んでも、**個人アカウントの封じ込めとクライアント側強制の限界には、端末管理やネットワーク制御で対応する必要がある**
 
 「どれが一番ガバナンスを取りやすいか」という問いには、「すでに持っているID基盤と端末管理にいちばん近いもの」と答えるのが現実的だと考えています。
 機能の一覧表だけで比べるのではなく、自社の基盤に乗せたときに、どこまでが設定だけで済み、どこから先に追加の仕組みが必要になるかを見積もってから選ぶことをおすすめします。
