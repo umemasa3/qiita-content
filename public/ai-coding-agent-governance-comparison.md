@@ -1,9 +1,9 @@
 ---
-title: "Kiro・Claude Code・Codexを組織で使うとき、ガバナンスが一番効かせやすいのはどれか"
+title: "Claude Code・Codex・Kiroを組織で使うとき、ガバナンスが一番効かせやすいのはどれか"
 tags:
-  - "Kiro"
   - "ClaudeCode"
   - "Codex"
+  - "Kiro"
   - "ガバナンス"
   - "AI駆動開発"
 private: false
@@ -16,10 +16,9 @@ ignorePublish: false
 
 ## はじめに
 
-これまでの記事では、Kiroをエンタープライズで使うときのログイン経路、プロンプトログ、マルチアカウントでのガバナンス設計などを整理してきました。
-社内でこうした話をしていると、必ず出てくる質問があります。
+AIコーディングエージェントを組織に導入する検討をしていると、必ず出てくる質問があります。
 
-「Claude CodeやCodexと比べて、Kiroはガバナンスが取りやすいの？」
+「Claude Code、Codex、Kiroのうち、どれが一番ガバナンスを取りやすいの？」
 
 3つとも「組織向けの管理機能がある」とうたっていますが、管理の入口、ポリシーの届け方、効く範囲、迂回されやすさはかなり違います。
 この記事では、各製品の公式ドキュメント（2026年11月時点）をもとに、**管理者がガバナンスを効かせるまでの手間と、効かせた後の確実さ**という観点で3製品を比較します。
@@ -31,10 +30,10 @@ ignorePublish: false
 
 参考:
 
-- Kiro: [Governance](https://kiro.dev/docs/enterprise/governance/) / [Enterprise Management](https://kiro.dev/docs/enterprise/enterprise-management/getting-started/)
 - Claude Code: [Admin setup](https://code.claude.com/docs/en/admin-setup)
   / [Server-managed settings](https://code.claude.com/docs/en/server-managed-settings)
 - Codex: [Admin rollout guide](https://learn.chatgpt.com/docs/enterprise/admin-setup) / [Managed configuration](https://learn.chatgpt.com/docs/enterprise/managed-configuration)
+- Kiro: [Governance](https://kiro.dev/docs/enterprise/governance/) / [Enterprise Management](https://kiro.dev/docs/enterprise/enterprise-management/getting-started/)
 
 ## 先に結論
 
@@ -42,9 +41,9 @@ ignorePublish: false
 
 | 組織の前提 | ガバナンスを効かせやすいもの | 理由 |
 |-----------|------------------------|------|
-| AWSが中心で、IAM Identity Centerを運用している | Kiro | 既存のAWSアカウントとIdCの上で、コンソールのトグル中心に設定が終わる |
 | MDMで端末を管理しており、実行内容まで細かく縛りたい | Claude Code | 制御項目が最も多く、MDM配布と組み合わせたときの強制力が高い |
 | ChatGPT Enterpriseを全社導入済みで、SCIM/RBACが整っている | Codex | 既存のワークスペース、グループ、ロールにそのままポリシーを割り当てられる |
+| AWSが中心で、IAM Identity Centerを運用している | Kiro | 既存のAWSアカウントとIdCの上で、コンソールのトグル中心に設定が終わる |
 
 そのうえで、3製品に共通する事実が2つあります。
 
@@ -64,70 +63,6 @@ ignorePublish: false
 4. **制御できる範囲** — モデル、MCP、シェル、ファイル、ネットワークなど
 5. **グループ単位の差分** — 部門ごとに例外を持たせられるか
 6. **可視化と監査** — 使われ方を後から追えるか
-
-## Kiro：AWSの上で完結する。細かい制御はプレビュー段階
-
-### 管理の入口とID統制
-
-Kiroの管理は、**Kiroプロファイルを作成したAWSアカウントのKiro console**で行います。
-ユーザーはIAM Identity Center（または外部IdP）経由でサブスクライブするため、既存のAWS組織とIdCを持っている会社なら、新しいID基盤を用意する必要がありません。
-
-Settings > Shared settingsで設定できる主な項目と、そのデフォルトは次のとおりです。
-
-| 項目 | デフォルト | 管理者ができること |
-|------|-----------|-----------------|
-| モデル | 制限なし（新モデルも自動で使える） | 許可リストで制限、デフォルトモデルの指定 |
-| MCP | 制限なし | 全面無効化、またはMCPレジストリによる許可リスト |
-| CLI用APIキー | 生成不可 | 生成を許可 |
-| Web tools | 利用可 | 無効化 |
-| Cloud Sessions（IdC利用時） | 無効 | 有効化 |
-
-これらは**組織レベルで設定し、アカウント単位で上書き**できます（詳しくは[マルチアカウントの記事](https://qiita.com/umemasa3/items/6b5acecba5ed6dc9a203)で整理しました）。
-APIキー生成やCloud Sessionsのように、リスクの大きい機能がデフォルトで閉じている点は、管理者にとって手間が少ない設計です。
-
-サインイン方法の制限（Builder IDやGoogle/GitHubを使わせない）は、コンソールではなく端末に置く`managed-settings.json`で行います。
-ファイルはOSの保護パス（管理者権限が必要な場所）に置き、MDMで配布する想定です。
-
-:::note warn
-MCPなどの組織ガバナンスは、IAM Identity CenterかAPIキーで認証したユーザーにしか効きません。
-Builder IDやソーシャルログインのユーザーは対象外です。
-サインイン制限を端末に配らない限り、「個人アカウントでログインされたら統制が外れる」状態が残ります。
-:::
-
-### Enterprise Managementで細かい制御が追加された
-
-2026年11月に、**Kiro Enterprise Management**がプレビューとして公開されました。
-Kiro console の Controls で、KGLというYAML形式のポリシー（フォーム画面でも編集可）を管理します。
-対象はモデル、MCP、シェル、ネットワークとWeb、ファイルシステム、Skills/Powers/エージェント、プライバシーとテレメトリーなどです。
-
-管理者目線で便利な点は次のとおりです。
-
-- **ユーザー・グループ単位のルール**を書ける（IdCや外部IdPのグループIDを指定）
-- 公開（Publish）ごとに**リビジョン番号が付き、履歴を追える**。公開前に差分も確認できる
-- ルールと設定は最大5分でクライアントに届く。**組織のsteeringファイルの配布**もできる
-- プロンプトログのS3出力、ユーザー別の日次利用レポート（CSV/OpenTelemetry）、操作ごとのイベント送信を同じポリシーで設定できる
-
-一方で、本番で頼るには注意点があります。
-
-- プレビューで、**us-east-1とeu-central-1のプロファイルのみ**が対象
-- 強制の主体が項目ごとに違う。モデル利用、APIキー作成、Web検索は**Kiroのサービス側で判定**されるが、MCP、シェル、ファイル操作は**クライアント側の強制**（Kiro CLI 3.1.0以降 / Kiro IDE 1.4.154以降が必要）
-- MCPのdenyルールが一部ユーザーで効かない、といった挙動がドキュメント上で「調査中」とされている
-- フィールド名を打ち間違えるとエラーにならず無視され、ルールが全体に効いてしまう
-
-:::note warn
-クライアント側で強制される制御は、端末の管理者権限を持つユーザーには迂回され得ると公式に明記されています。
-これはKiroに限らず、後述のClaude Code、Codexも同様です。
-:::
-
-### Kiroの評価
-
-AWS中心の組織にとっては、**3製品の中で最も導入時の手間が少ない**と考えます。
-ID、課金、ログ出力先（S3）、暗号化キー（KMS）がすべて既存のAWSアカウント内に収まり、主要な制御はコンソールのトグルで済みます。
-
-弱点は2つです。
-
-- シェルやファイル操作の細かい制御はEnterprise Management（プレビュー）頼みで、リージョンも限られる
-- デプロイオプションの選び方（IdCの組織インスタンスかアカウントインスタンスか）で効くガバナンスが変わり、後から変えにくい
 
 ## Claude Code：制御は最も深い。そのぶん設計量も多い
 
@@ -223,7 +158,7 @@ Codex cloudの実行環境も、ローカル端末のポリシーやMDM設定を
 
 :::note warn
 ログイン方法やログイン先ワークスペースの制限（`allowed_login_methods`、`allowed_chatgpt_workspaces`）は、クラウド配布のRequirementsでは**無視され**、端末の`requirements.toml`かmacOSのMDMでしか効きません。
-個人のChatGPTアカウントでの利用を封じるには、ここでも端末側の配布が必要です。
+個人のChatGPTアカウントでの利用を封じるには、端末側の配布が必要です。
 :::
 
 ### Codexの評価
@@ -234,22 +169,86 @@ RequirementsとDefaultsの区別も分かりやすく、「何を強制し、何
 一方で、ローカル/クラウド/APIの境界ごとに効く設定が違うため、「設定したつもりで効いていない」を防ぐ検証の手間は小さくありません。
 可視化は、ワークスペースのCodex分析、Analytics API、Compliance APIで行います。
 
+## Kiro：AWSの上で完結する。細かい制御はプレビュー段階
+
+### 管理の入口とID統制
+
+Kiroの管理は、**Kiroプロファイルを作成したAWSアカウントのKiro console**で行います。
+ユーザーはIAM Identity Center（または外部IdP）経由でサブスクライブするため、既存のAWS組織とIdCを持っている会社なら、新しいID基盤を用意する必要がありません。
+
+Settings > Shared settingsで設定できる主な項目と、そのデフォルトは次のとおりです。
+
+| 項目 | デフォルト | 管理者ができること |
+|------|-----------|-----------------|
+| モデル | 制限なし（新モデルも自動で使える） | 許可リストで制限、デフォルトモデルの指定 |
+| MCP | 制限なし | 全面無効化、またはMCPレジストリによる許可リスト |
+| CLI用APIキー | 生成不可 | 生成を許可 |
+| Web tools | 利用可 | 無効化 |
+| Cloud Sessions（IdC利用時） | 無効 | 有効化 |
+
+これらは**組織レベルで設定し、アカウント単位で上書き**できます（詳しくは[マルチアカウントの記事](https://qiita.com/umemasa3/items/6b5acecba5ed6dc9a203)で整理しました）。
+APIキー生成やCloud Sessionsのように、リスクの大きい機能がデフォルトで閉じている点は、管理者にとって手間が少ない設計です。
+
+サインイン方法の制限（Builder IDやGoogle/GitHubを使わせない）は、コンソールではなく端末に置く`managed-settings.json`で行います。
+ファイルはOSの保護パス（管理者権限が必要な場所）に置き、MDMで配布する想定です。
+
+:::note warn
+MCPなどの組織ガバナンスは、IAM Identity CenterかAPIキーで認証したユーザーにしか効きません。
+Builder IDやソーシャルログインのユーザーは対象外です。
+サインイン制限を端末に配らない限り、「個人アカウントでログインされたら統制が外れる」状態が残ります。
+:::
+
+### Enterprise Managementで細かい制御が追加された
+
+2026年11月に、**Kiro Enterprise Management**がプレビューとして公開されました。
+Kiro console の Controls で、KGLというYAML形式のポリシー（フォーム画面でも編集可）を管理します。
+対象はモデル、MCP、シェル、ネットワークとWeb、ファイルシステム、Skills/Powers/エージェント、プライバシーとテレメトリーなどです。
+
+管理者目線で便利な点は次のとおりです。
+
+- **ユーザー・グループ単位のルール**を書ける（IdCや外部IdPのグループIDを指定）
+- 公開（Publish）ごとに**リビジョン番号が付き、履歴を追える**。公開前に差分も確認できる
+- ルールと設定は最大5分でクライアントに届く。**組織のsteeringファイルの配布**もできる
+- プロンプトログのS3出力、ユーザー別の日次利用レポート（CSV/OpenTelemetry）、操作ごとのイベント送信を同じポリシーで設定できる
+
+一方で、本番で頼るには注意点があります。
+
+- プレビューで、**us-east-1とeu-central-1のプロファイルのみ**が対象
+- 強制の主体が項目ごとに違う。モデル利用、APIキー作成、Web検索は**Kiroのサービス側で判定**されるが、MCP、シェル、ファイル操作は**クライアント側の強制**（Kiro CLI 3.1.0以降 / Kiro IDE 1.4.154以降が必要）
+- MCPのdenyルールが一部ユーザーで効かない、といった挙動がドキュメント上で「調査中」とされている
+- フィールド名を打ち間違えるとエラーにならず無視され、ルールが全体に効いてしまう
+
+:::note warn
+クライアント側で強制される制御は、端末の管理者権限を持つユーザーには迂回され得ると公式に明記されています。
+これはKiroに限らず、前述のClaude Code、Codexも同様です。
+:::
+
+### Kiroの評価
+
+AWS中心の組織にとっては、**3製品の中で最も導入時の手間が少ない**と考えます。
+ID、課金、ログ出力先（S3）、暗号化キー（KMS）がすべて既存のAWSアカウント内に収まり、主要な制御はコンソールのトグルで済みます。
+
+弱点は2つです。
+
+- シェルやファイル操作の細かい制御はEnterprise Management（プレビュー）頼みで、リージョンも限られる
+- デプロイオプションの選び方（IdCの組織インスタンスかアカウントインスタンスか）で効くガバナンスが変わり、後から変えにくい
+
 ## 観点別の比較表
 
 ここまでの内容を、冒頭の6つの観点でまとめます。
 ◎・○・△は「その観点でガバナンスを効かせやすいか」の相対評価で、筆者の判断です。
 
-| 観点 | Kiro | Claude Code | Codex |
-|------|------|-------------|-------|
-| 管理の入口 | ◎ AWSアカウント内のKiro console | ○ claude.ai管理コンソール＋端末配布 | ○ ChatGPT Admin Console（Agent security） |
-| ID統制の土台 | ◎ IAM Identity Center / 外部IdP | ○ SSO / SCIM（Claudeアカウント側） | ○ SSO / SCIM / RBAC（ChatGPTワークスペース側） |
-| 個人アカウントの封じ込め | △ 端末の`managed-settings.json`が必要 | △ 端末側のログイン強制、またはテナント制限 | △ 端末の`requirements.toml`かMDMが必要 |
-| 端末なしでの配布 | ○ コンソール設定、Enterprise Managementは5分で反映 | ○ Server-managed（1時間ごと） | ○ Agent securityのクラウド配布 |
-| 制御の深さ | ○ 主要項目はGA、シェル・ファイルはプレビュー | ◎ 最も細かい | ○ 承認・サンドボックス・ネットワークまで対応 |
-| グループ単位の差分 | ○ アカウント上書き＋（プレビュー）グループルール | △ Enterpriseのみ、設定がマージされない | ◎ 優先度付きOverrides |
-| 迂回されにくさ | ○ モデル・Web検索・APIキーはサービス側で判定 | △ 環境変数やAPIキーで取得自体を回避できる | ○ 端末MDMがクラウド設定より上位 |
-| 可視化・監査 | ◎ S3・OpenTelemetry出力を自社アカウントで保持 | ○ OpenTelemetry、Analytics/Compliance API | ○ Analytics/Compliance API、OpenTelemetry |
-| リスク機能の初期値 | ◎ APIキー・Cloud Sessionsは初期オフ | ○ 管理者が明示的に閉じる | ○ Codex cloudはEnterpriseで初期オフ |
+| 観点 | Claude Code | Codex | Kiro |
+|------|-------------|-------|------|
+| 管理の入口 | ○ claude.ai管理コンソール＋端末配布 | ○ ChatGPT Admin Console（Agent security） | ◎ AWSアカウント内のKiro console |
+| ID統制の土台 | ○ SSO / SCIM（Claudeアカウント側） | ○ SSO / SCIM / RBAC（ChatGPTワークスペース側） | ◎ IAM Identity Center / 外部IdP |
+| 個人アカウントの封じ込め | △ 端末側のログイン強制、またはテナント制限 | △ 端末の`requirements.toml`かMDMが必要 | △ 端末の`managed-settings.json`が必要 |
+| 端末なしでの配布 | ○ Server-managed（1時間ごと） | ○ Agent securityのクラウド配布 | ○ コンソール設定、Enterprise Managementは5分で反映 |
+| 制御の深さ | ◎ 最も細かい | ○ 承認・サンドボックス・ネットワークまで対応 | ○ 主要項目はGA、シェル・ファイルはプレビュー |
+| グループ単位の差分 | △ Enterpriseのみ、設定がマージされない | ◎ 優先度付きOverrides | ○ アカウント上書き＋（プレビュー）グループルール |
+| 迂回されにくさ | △ 環境変数やAPIキーで取得自体を回避できる | ○ 端末MDMがクラウド設定より上位 | ○ モデル・Web検索・APIキーはサービス側で判定 |
+| 可視化・監査 | ○ OpenTelemetry、Analytics/Compliance API | ○ Analytics/Compliance API、OpenTelemetry | ◎ S3・OpenTelemetry出力を自社アカウントで保持 |
+| リスク機能の初期値 | ○ 管理者が明示的に閉じる | ○ Codex cloudはEnterpriseで初期オフ | ◎ APIキー・Cloud Sessionsは初期オフ |
 
 ## どの組織でも共通してやるべきこと
 
@@ -263,9 +262,9 @@ RequirementsとDefaultsの区別も分かりやすく、「何を強制し、何
 
 ## まとめ
 
-- **AWS中心の組織ならKiroが最も容易**。IdC、S3、KMSといった既存のAWS資産の上で、コンソール中心に統制できる。シェルやファイルの細かい制御はEnterprise Management（プレビュー）の成熟待ち
 - **Claude Codeは最も深く統制できるが、最も設計量が多い**。MDMが整っている組織なら強力だが、Server-managed settingsだけに頼ると迂回経路が残る
 - **Codexは、ChatGPT Enterpriseを使っている組織なら、グループ単位の配布が最も整理しやすい**。ただしローカル/クラウド/APIの境界ごとに確認が要る
+- **AWS中心の組織ならKiroが最も容易**。IdC、S3、KMSといった既存のAWS資産の上で、コンソール中心に統制できる。シェルやファイルの細かい制御はEnterprise Management（プレビュー）の成熟待ち
 - どれを選んでも、**個人アカウントの封じ込めとクライアント側強制の限界には、端末管理で対応する必要がある**
 
 「どれが一番ガバナンスを取りやすいか」という問いには、「すでに持っているID基盤と端末管理にいちばん近いもの」と答えるのが現実的だと考えています。
