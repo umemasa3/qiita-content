@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1000" height="440" viewBox="-0.5 -0.5 1000 440">
+  <defs/>
+  <g>
+    <!-- タイトル -->
+    <text x="500" y="26" fill="#333333" font-family="Helvetica" font-size="18" text-anchor="middle" font-weight="bold">AIが「調べる」を無料にした結果、情報の値段が逆転した</text>
+
+    <!-- ===== 左：二次情報 ===== -->
+    <rect x="40" y="55" width="420" height="330" rx="8" fill="#f5f5f5" stroke="#bbbbbb" stroke-width="1.5"/>
+    <rect x="40" y="55" width="420" height="38" rx="8" fill="#e6e6e6" stroke="#bbbbbb" stroke-width="1.5"/>
+    <text x="250" y="80" fill="#333" font-family="Helvetica" font-size="14" text-anchor="middle" font-weight="bold">二次情報（すでに公開されているもの）</text>
+
+    <text x="65" y="122" fill="#555" font-family="Helvetica" font-size="12">レビューサイトの低評価</text>
+    <text x="65" y="146" fill="#555" font-family="Helvetica" font-size="12">官公庁の統計・白書</text>
+    <text x="65" y="170" fill="#555" font-family="Helvetica" font-size="12">競合サービスの価格表</text>
+    <text x="65" y="194" fill="#555" font-family="Helvetica" font-size="12">SNS・掲示板の書き込み</text>
+    <text x="65" y="218" fill="#555" font-family="Helvetica" font-size="12">業界メディアの記事</text>
+
+    <!-- 下向き矢印 -->
+    <line x1="250" y1="240" x2="250" y2="285" stroke="#b85450" stroke-width="3"/>
+    <polygon points="250,292 242,278 258,278" fill="#b85450"/>
+    <text x="290" y="270" fill="#b85450" font-family="Helvetica" font-size="13" font-weight="bold">値段が下がった</text>
+
+    <rect x="65" y="300" width="370" height="70" rx="6" fill="#ffffff" stroke="#b85450" stroke-width="1.5"/>
+    <text x="250" y="322" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">AIが数時間で網羅する</text>
+    <text x="250" y="342" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">＝ 誰でも同じものを持てる</text>
+    <text x="250" y="362" fill="#b85450" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">差別化の源泉にならない</text>
+
+    <!-- ===== 右：一次情報 ===== -->
+    <rect x="540" y="55" width="420" height="330" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+    <rect x="540" y="55" width="420" height="38" rx="8" fill="#c3e0c0" stroke="#82b366" stroke-width="1.5"/>
+    <text x="750" y="80" fill="#333" font-family="Helvetica" font-size="14" text-anchor="middle" font-weight="bold">一次情報（自分で聞いて得たもの）</text>
+
+    <text x="565" y="122" fill="#333" font-family="Helvetica" font-size="12">あの店主が本当は何に苛立っているか</text>
+    <text x="565" y="146" fill="#333" font-family="Helvetica" font-size="12">現場が紙をやめられない本当の理由</text>
+    <text x="565" y="170" fill="#333" font-family="Helvetica" font-size="12">その痛みに実際いくら払っているか</text>
+    <text x="565" y="194" fill="#333" font-family="Helvetica" font-size="12">既存ツールを解約した本当のきっかけ</text>
+    <text x="565" y="218" fill="#333" font-family="Helvetica" font-size="12">言葉にされないまま諦められた不満</text>
+
+    <!-- 上向き矢印 -->
+    <line x1="750" y1="292" x2="750" y2="247" stroke="#82b366" stroke-width="3"/>
+    <polygon points="750,240 742,254 758,254" fill="#82b366"/>
+    <text x="790" y="270" fill="#3d7a35" font-family="Helvetica" font-size="13" font-weight="bold">値段が上がった</text>
+
+    <rect x="565" y="300" width="370" height="70" rx="6" fill="#ffffff" stroke="#82b366" stroke-width="1.5"/>
+    <text x="750" y="322" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">AIには入っていない</text>
+    <text x="750" y="342" fill="#333" font-family="Helvetica" font-size="12" text-anchor="middle">＝ 自分で会いに行くしかない</text>
+    <text x="750" y="362" fill="#3d7a35" font-family="Helvetica" font-size="12" text-anchor="middle" font-weight="bold">差別化の源泉になる</text>
+
+    <!-- 中央の対比記号 -->
+    <circle cx="500" cy="220" r="22" fill="#ffffff" stroke="#999999" stroke-width="1.5"/>
+    <text x="500" y="227" fill="#666" font-family="Helvetica" font-size="16" text-anchor="middle" font-weight="bold">vs</text>
+
+    <!-- 脚注 -->
+    <text x="500" y="415" fill="#666" font-family="Helvetica" font-size="12" text-anchor="middle">AIは「調べる」を無料にしたが、「聞く」は無料にしなかった</text>
+  </g>
+</svg>
